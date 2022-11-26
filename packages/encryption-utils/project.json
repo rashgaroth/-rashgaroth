@@ -29,6 +29,13 @@
         "main": "packages/encryption-utils/src/index.ts",
         "assets": ["packages/encryption-utils/*.md"]
       }
+    },
+    "typedoc": {
+      "executor": "@enio.ai/typedoc:typedoc",
+      "options": {
+        "options": "typedoc.json"
+      },
+      "configurations": {}
     }
   },
   "tags": ["scope:public", "type:util", "target:all"]

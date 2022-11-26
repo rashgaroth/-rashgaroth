@@ -7,8 +7,8 @@
     "declaration": false,
     "moduleResolution": "Node",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
+    "target": "ESNext",
+    "module": "ESNext",
     "typeRoots": ["node_modules/@types"],
     "lib": ["ES2022", "dom"],
     "types": ["node"],
@@ -18,15 +18,9 @@
         "packages/encryption-utils/src/index.ts"
       ],
       "@rashtaurigae/string-utils": ["packages/string-utils/src/index.ts"],
-      "crypto": [
-        "node_modules/crypto-js"
-      ],
-      "sjcl": [
-        "node_modules/sjcl"
-      ],
-      "base64-js": [
-        "node_modules/base64-js"
-      ]
+      "base64-js": ["node_modules/base64-js"],
+      "crypto": ["node_modules/crypto-js"],
+      "sjcl": ["node_modules/sjcl"]
     }
   },
   "exclude": ["tmp"]
