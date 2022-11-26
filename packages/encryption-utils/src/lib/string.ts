@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as crypto from 'crypto';
+// @ts-ignore
 import * as sjcl from 'sjcl';
 import { IStringEncryption } from '../interfaces';
 import * as base64js from 'base64-js';
@@ -7,27 +9,27 @@ export default class StringEncryption {
   key: string;
 
   // @sjcl-algorithm
-  BITS_PER_WORD: number = 32;
+  BITS_PER_WORD = 32;
 
-  ALGORITHM_NONCE_SIZE: number = 3;
+  ALGORITHM_NONCE_SIZE = 3;
 
-  ALGORITHM_KEY_SIZE: number = 4;
+  ALGORITHM_KEY_SIZE = 4;
 
-  PBKDF2_SALT_SIZE: number = 4; // 32-bit words.
+  PBKDF2_SALT_SIZE = 4; // 32-bit words.
 
-  PBKDF2_ITERATIONS: number = 32767;
+  PBKDF2_ITERATIONS = 32767;
 
-  BEND_SIZE: number = 3;
+  BEND_SIZE = 3;
   // @scee-algorithm
-  SCEE_ALGORITHM_NAME: string = "AES-GCM";
+  SCEE_ALGORITHM_NAME = "AES-GCM";
 
-  SCEE_ALGORITHM_NONCE_SIZE: number = 12;
+  SCEE_ALGORITHM_NONCE_SIZE = 12;
 
-  SCEE_ALGORITHM_KEY_SIZE: number = 16 * 8;
+  SCEE_ALGORITHM_KEY_SIZE = 16 * 8;
 
-  SCEE_PBKDF2_SALT_SIZE: number = 16;
+  SCEE_PBKDF2_SALT_SIZE = 16;
 
-  SCEE_PBKDF2_ITERATIONS: number = 32767;
+  SCEE_PBKDF2_ITERATIONS = 32767;
 
   constructor(params: IStringEncryption) {
     this.key = params.key
@@ -54,6 +56,8 @@ export default class StringEncryption {
     const key = sjcl.misc.pbkdf2(password, salt, this.PBKDF2_ITERATIONS, this.ALGORITHM_NONCE_SIZE * this.BITS_PER_WORD);
     const plainTextRaw = sjcl.codec.utf8String.toBits(text);
     const chiperTextAndNonceAndSalt = sjcl.bitArray.concat(salt, this.encrypt(plainTextRaw, key))
+
+    return chiperTextAndNonceAndSalt
   }
 
   decryptString(base64CiphertextAndNonceAndSalt: string, password: string) {
@@ -90,17 +94,21 @@ export default class StringEncryption {
 
   async encryptSceeString(plaintext: string, password: string = this.key) {
     // Generate a 128-bit salt using a CSPRNG and a nonce.
-    let salt = crypto.getRandomValues(new Uint8Array(this.SCEE_PBKDF2_SALT_SIZE));
-    let nonce = crypto.getRandomValues(new Uint8Array(this.SCEE_ALGORITHM_NONCE_SIZE));
-    let aesGcm = { name: this.SCEE_ALGORITHM_NAME, iv: nonce };
+    // @ts-ignore
+    const salt = crypto.getRandomValues(new Uint8Array(this.SCEE_PBKDF2_SALT_SIZE));
+    // @ts-ignore
+    const nonce = crypto.getRandomValues(new Uint8Array(this.SCEE_ALGORITHM_NONCE_SIZE));
+    const aesGcm = { name: this.SCEE_ALGORITHM_NAME, iv: nonce };
   
     // Derive a key using PBKDF2.
-    let deriveParams = { name: "PBKDF2", salt: salt, iterations: this.SCEE_PBKDF2_ITERATIONS, hash: { name: "SHA-256" } };
-    let rawKey = await crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"]);
-    let cryptoKey = await crypto.subtle.deriveKey(deriveParams, rawKey, { name: this.SCEE_ALGORITHM_NAME, length: this.SCEE_ALGORITHM_KEY_SIZE }, true, ["encrypt"]);
+    const deriveParams = { name: "PBKDF2", salt: salt, iterations: this.SCEE_PBKDF2_ITERATIONS, hash: { name: "SHA-256" } };
+    // @ts-ignore
+    const rawKey = await crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"]);
+    // @ts-ignore
+    const cryptoKey = await crypto.subtle.deriveKey(deriveParams, rawKey, { name: this.SCEE_ALGORITHM_NAME, length: this.SCEE_ALGORITHM_KEY_SIZE }, true, ["encrypt"]);
   
     // Encrypt the string.
-    let ciphertext = await this.encryptWithCryptoKey(aesGcm, (new TextEncoder()).encode(plaintext), cryptoKey);
+    const ciphertext = await this.encryptWithCryptoKey(aesGcm, (new TextEncoder()).encode(plaintext), cryptoKey);
     return base64js.fromByteArray(this.joinBuffers(salt, ciphertext));
   }
 
@@ -116,7 +124,9 @@ export default class StringEncryption {
 
 	// Derive the key using PBKDF2.
 	const deriveParams = { name: "PBKDF2", salt: salt, iterations: this.SCEE_PBKDF2_ITERATIONS, hash: { name: "SHA-256" } };
+  // @ts-ignore
 	const rawKey = await crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"]);
+  // @ts-ignore
 	const cryptoKey = await crypto.subtle.deriveKey(deriveParams, rawKey, { name: this.SCEE_ALGORITHM_NAME, length: this.SCEE_ALGORITHM_KEY_SIZE }, true, ["decrypt"]);
 
 	// Decrypt the string.
@@ -124,13 +134,15 @@ export default class StringEncryption {
 	return (new TextDecoder()).decode(plaintext);
   }
 
+  // @ts-ignore
   async encryptWithCryptoKey(aesGcm: { name: string; iv: Uint8Array }, plaintext: crypto.webcrypto.BufferSource, cryptoKey: crypto.webcrypto.CryptoKey) {
+    // @ts-ignore
     const ciphertext = await crypto.subtle.encrypt(aesGcm, cryptoKey, plaintext);
     return this.joinBuffers(aesGcm.iv, new Uint8Array(ciphertext));
   }
 
   joinBuffers(a: Uint8Array, b: Uint8Array) {
-    let c = new Uint8Array(a.byteLength + b.byteLength);
+    const c = new Uint8Array(a.byteLength + b.byteLength);
     for (let i = 0; i < a.length; i++) {
       c[i] = a[i];
     }
@@ -141,10 +153,13 @@ export default class StringEncryption {
   }
 
   async decryptWithCryptoKey(
+    // @ts-ignore
     aesGcm: crypto.webcrypto.AlgorithmIdentifier | crypto.webcrypto.RsaOaepParams | crypto.webcrypto.AesCtrParams | crypto.webcrypto.AesCbcParams | crypto.webcrypto.AesGcmParams, 
+    // @ts-ignore
     ciphertext: crypto.webcrypto.BufferSource, 
     cryptoKey: crypto.webcrypto.CryptoKey
   ) {
+    // @ts-ignore
     const plaintext = await crypto.subtle.decrypt(aesGcm, cryptoKey, ciphertext);
     return new Uint8Array(plaintext);
   }

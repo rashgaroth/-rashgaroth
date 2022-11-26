@@ -17,7 +17,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rashgaroth/encrypt-utils/*": ["packages/encrypt-utils/dist/index.js"]
+      "@rashgaroth/encryption-utils/*": ["packages/encrypt-utils/dist/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]
