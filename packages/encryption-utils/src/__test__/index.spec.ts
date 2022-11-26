@@ -1,4 +1,4 @@
-import ObjectEncryption from '../lib/object'
+import { ObjectEncryption } from '../lib/object'
 
 const objectEncryption = new ObjectEncryption({
   key: 'mykey',

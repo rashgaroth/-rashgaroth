@@ -5,20 +5,29 @@
     "noUnusedLocals": true,
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "moduleResolution": "Node",
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
+    "target": "ES2022",
+    "module": "ES2022",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
+    "lib": ["ES2022", "dom"],
+    "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@rashgaroth/encryption-utils/*": ["packages/encrypt-utils/dist/index.js"]
+      "@rashtaurigae/encryption-utils": [
+        "packages/encryption-utils/src/index.ts"
+      ],
+      "@rashtaurigae/string-utils": ["packages/string-utils/src/index.ts"],
+      "crypto": [
+        "node_modules/crypto-js"
+      ],
+      "sjcl": [
+        "node_modules/sjcl"
+      ],
+      "base64-js": [
+        "node_modules/base64-js"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["tmp"]
 }

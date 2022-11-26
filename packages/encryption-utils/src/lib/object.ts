@@ -1,7 +1,7 @@
 import * as crypto from 'crypto';
 import { IObjectEncryption } from '../interfaces';
 
-export default class ObjectEncryption {
+export class ObjectEncryption {
   key: string
 
   matcher: string

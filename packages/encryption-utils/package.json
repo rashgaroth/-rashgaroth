@@ -1,7 +1,13 @@
 {
   "name": "@rashtaurigae/encryption-utils",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "license": "MIT",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "unpkg": "./src/index.js",
+  "files": [
+    "**/*"
+  ],
   "repository": {
     "url": "https://github.com/rashgaroth/utils"
   },
@@ -11,5 +17,11 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/rashgaroth/utils",
+  "readme": "https://github.com/rashgaroth/utils#readme",
+  "bugs": {
+    "url": "https://github.com/rashgaroth/utils/issues",
+    "email": "nefti.dwiyan@gmail.com"
   }
 }

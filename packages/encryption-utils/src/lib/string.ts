@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as crypto from 'crypto';
-// @ts-ignore
 import * as sjcl from 'sjcl';
 import { IStringEncryption } from '../interfaces';
 import * as base64js from 'base64-js';
 
-export default class StringEncryption {
+export class StringEncryption {
   key: string;
 
   // @sjcl-algorithm
