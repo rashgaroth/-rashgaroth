@@ -1,4 +1,15 @@
 {
-  "name": "@rashgaroth/encryption-utils",
-  "version": "0.0.1"
+  "name": "@rashtaurigae/encryption-utils",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/rashgaroth/utils"
+  },
+  "author": {
+    "email": "nefti.dwiyan@gmail.com",
+    "name": "dwiyan"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }

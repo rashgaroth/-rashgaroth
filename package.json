@@ -1,6 +1,6 @@
 {
-  "name": "@rashgaroth/utils",
-  "version": "0.0.0",
+  "name": "@rashtaurigae/utils",
+  "version": "1.0.0",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/rashgaroth/utils"
@@ -11,7 +11,9 @@
   },
   "scripts": {
     "test:encrypt-utils": "nx test encryption-utils",
-    "build:encrypt-utils": "nx build encryption-utils"
+    "build:encrypt-utils": "nx build encryption-utils",
+    "test:all": "nx affected:test --all --codeCoverage --skip-nx-cache",
+    "publish:encrypt-utils": "cd dist/packages/encryption-utils && npm publish --access public"
   },
   "private": false,
   "devDependencies": {
