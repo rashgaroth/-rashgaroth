@@ -1,12 +1,19 @@
 {
-  "name": "@rashgaroth",
+  "name": "@rashgaroth/utils",
   "version": "0.0.0",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/rashgaroth/utils"
+  },
+  "author": {
+    "email": "nefti.dwiyan@gmail.com",
+    "name": "dwiyan"
+  },
   "scripts": {
     "test:encrypt-utils": "nx test web3-utils",
     "build:encrypt-utils": "nx build web3-utils"
   },
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@nrwl/eslint-plugin-nx": "^15.2.1",
     "@nrwl/jest": "^15.2.1",
