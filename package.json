@@ -12,7 +12,9 @@
   "scripts": {
     "test:encrypt-utils": "nx test encryption-utils",
     "build:encrypt-utils": "nx build encryption-utils",
+    "build:string-utils": "nx build string-utils",
     "publish:encrypt-utils": "npm run test:encrypt-utils && npm run build:encrypt-utils && cd dist/packages/encryption-utils && npm publish",
+    "publish:string-utils": "npm run build:string-utils && cd dist/packages/string-utils && npm publish --access public",
     "test:all": "nx affected:test --all --codeCoverage --skip-nx-cache",
     "create:docs": "nx typedoc",
     "setup:docs": "nx g @enio.ai/typedoc:config"

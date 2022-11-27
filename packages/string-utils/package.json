@@ -1,4 +1,28 @@
 {
   "name": "@rashtaurigae/string-utils",
-  "version": "0.0.1"
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "unpkg": "./src/index.js",
+  "files": [
+    "**/*"
+  ],
+  "repository": {
+    "url": "https://github.com/rashgaroth/utils"
+  },
+  "author": {
+    "email": "nefti.dwiyan@gmail.com",
+    "name": "dwiyan"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/rashgaroth/utils",
+  "readme": "https://github.com/rashgaroth/utils#readme",
+  "bugs": {
+    "url": "https://github.com/rashgaroth/utils/issues",
+    "email": "nefti.dwiyan@gmail.com"
+  },
+  "dependencies": {}
 }

@@ -1,11 +1,15 @@
-# string-utils
+# String utils - String utilities for your apps
 
-This library was generated with [Nx](https://nx.dev).
+## Install
 
-## Running unit tests
+using `npm`
 
-Run `nx test string-utils` to execute the unit tests via [Jest](https://jestjs.io).
+```console
+  npm install @rashtaurigae/string-utils
+```
 
-## Running lint
+using `yarn`
 
-Run `nx lint string-utils` to execute the lint via [ESLint](https://eslint.org/).
+```console
+  yarn add @rashtaurigae/string-utils
+```
