@@ -18,9 +18,7 @@
         "packages/encryption-utils/src/index.ts"
       ],
       "@rashtaurigae/string-utils": ["packages/string-utils/src/index.ts"],
-      "base64-js": ["node_modules/base64-js"],
-      "crypto": ["node_modules/crypto-js"],
-      "sjcl": ["node_modules/sjcl"]
+      "crypto": ["node_modules/crypto-js"]
     }
   },
   "exclude": ["tmp"]
